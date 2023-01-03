@@ -19,3 +19,10 @@ class MovieSerializer(serializers.Serializer):
         instance.active = validated_data.get('active', instance.active)
         instance.save()
         return instance
+
+    def validate_name(self, value):
+        """Name validation the name should be greater than 5 charecter"""
+        if len(value) < 5:
+            raise serializers.ValidationError("Name should be greater than 5 charecter")
+        else:
+            return value
