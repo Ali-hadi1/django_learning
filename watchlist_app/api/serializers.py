@@ -20,6 +20,14 @@ class MovieSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+    #object level validation
+    def validation(self, data):
+        """Validation on whole fields"""
+        if data['name'] == data['description']:
+            raise serializers.ValidationError("name and description should not be the same!")
+        else:
+            return data
+
     def validate_name(self, value):
         """Name validation the name should be greater than 5 charecter"""
         if len(value) < 5:
