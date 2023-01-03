@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+<<<<<<< HEAD
+=======
+uploads/
+>>>>>>> 925624df4b4cd13fc968c96e943f450d062df039
