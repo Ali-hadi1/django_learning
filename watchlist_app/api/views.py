@@ -28,8 +28,18 @@ def movie_details(request, pk):
 @api_view(['GET', 'PUT'])
 def update_movie(request, pk):
     """Update a Movie"""
-    movie_serializer = serializers.MovieSerializer(data=request.data)
+    if request.method == 'GET':
+        return get_movie(Movie, pk)
+    
+    movie = Movie.objects.get(pk=pk)
+    movie_serializer = serializers.MovieSerializer(movie, data=request.data)
     if movie_serializer.is_valid():
         movie_serializer.save()
         return Response(movie_serializer.data)
-    return Response(movie_serializer.error)    
+    else:
+        return Response(movie_serializer.errors)    
+
+def get_movie(model, pk):
+    movie = model.objects.get(pk=pk)
+    movie_serializer = serializers.MovieSerializer(movie)
+    return Response(movie_serializer.data)
