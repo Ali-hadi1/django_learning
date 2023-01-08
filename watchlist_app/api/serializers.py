@@ -44,11 +44,17 @@ def name_length(value):
 # Build ModelSerializer
 class MovieSerializer(serializers.ModelSerializer):
     """Model Serializer for Movie model"""
+    len_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Movie
         fields = "__all__"
         # fields = ['id', 'name', 'description']
         # exclude = ['active', 'name']
+
+    def get_len_name(self, object):
+        """[IMP] custom serializer field it is like cumputed field"""
+        return len(object.name)
 
     def validate_name(self, value):
         """Name validation the name should be greater than 5 charecter"""
