@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from watchlist_app.api import serializers
+from watchlist_app.api.serializers import serializers
 from watchlist_app.models import Movie
 
 
