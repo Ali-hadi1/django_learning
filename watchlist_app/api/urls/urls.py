@@ -1,6 +1,6 @@
 from django.urls import path 
 
-from watchlist_app.api import views
+from watchlist_app.api.views import views
 
 urlpatterns = [
     path('create/', views.create_movie, name="create-movie"), 
