@@ -10,6 +10,7 @@ class WatchListSerializer(serializers.Serializer):
     storyline = serializers.CharField(max_length=200, min_length=5, allow_blank=False)
     platform = serializers.PrimaryKeyRelatedField(queryset=StreamPlatForm.objects.all())
     active = serializers.BooleanField()
+    created = serializers.DateTimeField(read_only=True)
 
     def create(self, validated_data):
         """Create a new WatchList record!"""
