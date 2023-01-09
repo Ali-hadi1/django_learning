@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from watchlist_app.models import WatchList
+from watchlist_app.models import StreamPlatForm
 
 
 class WatchListSerializer(serializers.Serializer):
@@ -7,6 +8,7 @@ class WatchListSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=50, min_length=5, allow_blank=False)
     storyline = serializers.CharField(max_length=200, min_length=5, allow_blank=False)
+    platform = serializers.PrimaryKeyRelatedField(queryset=StreamPlatForm.objects.all())
     active = serializers.BooleanField()
 
     def create(self, validated_data):
