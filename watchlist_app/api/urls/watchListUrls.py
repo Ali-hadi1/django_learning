@@ -9,5 +9,5 @@ urlpatterns = [
     path('<int:pk>', watchListView.watchlist_details, name="watchlist-details"),
 
     path('review/', reviewView.ReviewList.as_view(), name="reivew-list"),
-    path('review/<int:pk>', reviewView.ReviewDetail.as_view(), name="reivew-list"),
+    path('review/<int:pk>', reviewView.ReviewDetail.as_view(), name="review-list"),
 ]
